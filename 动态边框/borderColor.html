@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    #oText {
+        border: 5px dotted red;
+        color: red;
+        width: 500px;
+        height: 200px;
+    }
+    
+    #oaText {
+        border: 1px dotted #ff0000;
+        width: 500px;
+        height: 200px;
+    }
+</style>
+
+<body>
+    <Script Language="JavaScript">
+        function borderColor() {
+            if (self['oText'].style.borderColor == 'red') {
+                self['oText'].style.borderColor = 'yellow';
+            } else {
+                self['oText'].style.borderColor = 'red';
+            }
+            oTime = setTimeout('borderColor()', 400);
+        }
+
+
+    ryo:expression_r(onfocus=function light () { 
+        with(document.all.oText) { 
+            style.borderColor=(style.borderColor=="#ffee00"?"#ff0000": "#ffee00"); 
+            timer=setTimeout(light,500); 
+        } 
+    },onblur=function() {
+        this.style.borderColor="#ff0000"; 
+        clearTimeout(timer) 
+    })
+    </Script>
+    <input type="text" id="oText" onfocus="borderColor(this);" onblur="clearTimeout(oTime);">
+    <hr>
+    <br/>
+
+    <input type="text" id="oaText">
+</body>
+
+</html>
